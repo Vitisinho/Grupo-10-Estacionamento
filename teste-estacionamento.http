@@ -1,0 +1,157 @@
+### =====================================
+### Consultar CEP
+### =====================================
+
+GET http://localhost:3000/cep/80010000
+
+###
+
+### =====================================
+### Cadastrar Mensalista
+### =====================================
+
+POST http://localhost:3000/mensalistas
+Content-Type: application/json
+
+{
+    "placa": "00",
+    "tipo": "moto",
+    "proprietario": "Mario",
+    "cep": "8025008"
+}
+
+###
+
+### =====================================
+### Listar Mensalistas
+### =====================================
+
+GET http://localhost:3000/mensalistas
+
+###
+
+### =====================================
+### Entrada Veículo Comum
+### =====================================
+
+POST http://localhost:3000/entrada
+Content-Type: application/json
+
+{
+    "placa": "aas-331",
+    "tipo": "carro"
+}
+
+###
+
+### =====================================
+### Entrada Veículo Mensalista
+### =====================================
+
+POST http://localhost:3000/entrada
+Content-Type: application/json
+
+{
+    "placa": "MEN-1234",
+    "tipo": "carro"
+}
+
+###
+
+### =====================================
+### Tentar Entrada Duplicada
+### Deve retornar 400
+### =====================================
+
+POST http://localhost:3000/entrada
+Content-Type: application/json
+
+{
+    "placa": "ABC-1234",
+    "tipo": "carro"
+}
+
+###
+
+### =====================================
+### Listar Todos os Tickets
+### =====================================
+
+GET http://localhost:3000/tickets
+
+###
+
+### =====================================
+### Listar Tickets Abertos
+### =====================================
+
+GET http://localhost:3000/tickets/abertos
+
+###
+
+### =====================================
+### Buscar Ticket ID 1
+### =====================================
+
+GET http://localhost:3000/tickets/3
+
+###
+
+### =====================================
+### Registrar Saída Veículo Comum
+### =====================================
+
+PUT http://localhost:3000/saida/ABC-1234
+
+###
+
+### =====================================
+### Registrar Saída Mensalista
+### =====================================
+
+PUT http://localhost:3000/saida/MEN-1234
+
+###
+
+### =====================================
+### Buscar Ticket ID 1 Novamente
+### =====================================
+
+GET http://localhost:3000/tickets/1
+
+###
+
+### =====================================
+### Evento M5
+### =====================================
+
+POST http://localhost:3000/eventos/veiculo-saiu
+Content-Type: application/json
+
+{
+    "ticketId": 1,
+    "placa": "ABC-1234",
+    "tipo": "carro",
+    "horas": 2.5,
+    "valor": 12.50
+}
+
+###
+
+### =====================================
+### CEP Inválido
+### Deve retornar 400
+### =====================================
+
+GET http://localhost:3000/cep/00000000
+
+###
+
+### =====================================
+### Buscar Ticket Inexistente
+### Deve retornar 404
+### =====================================
+
+GET http://localhost:3000/tickets/999
+
+###
